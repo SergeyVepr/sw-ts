@@ -1,5 +1,7 @@
 import Button from "./ui/Button.tsx";
 import {NavLink} from "react-router";
+import {SWContext} from "../utils/context.ts";
+import {useContext} from "react";
 
 interface NavItemProps {
     itemTitle: string,
@@ -7,8 +9,10 @@ interface NavItemProps {
 
 const NavItem = ({itemTitle}: NavItemProps) => {
 
+    const {hero} = useContext(SWContext)
+
     return (
-        <NavLink to={`${itemTitle}`}><Button>{itemTitle}</Button></NavLink>
+        <NavLink to={`${itemTitle}/${hero}`}><Button>{itemTitle}</Button></NavLink>
     )
 }
 
