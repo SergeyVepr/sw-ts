@@ -8,7 +8,7 @@ const Header = () => {
 
     const {hero} = useContext(SWContext)
     return (
-        <header className="rounded-t-3xl bg-grey-color">
+        <header className="rounded-t-3xl bg-grey-color pt-7">
             <Navigation/>
             <h1 className="text-center text-3xl py-6">{characters[hero].name}</h1>
         </header>
