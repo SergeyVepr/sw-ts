@@ -9,9 +9,10 @@ export const useErrorPage = () => {
 
     useEffect(() => {
         if(!(heroId in characters)){
-            return;
+            changeHero();
+        }else{
+            changeHero(heroId);
         }
-        changeHero(heroId);
     }, [heroId]);
 
     return {

@@ -6,11 +6,14 @@ import {characters} from "../utils/constants.ts";
 
 const Header = () => {
 
+
     const {hero} = useContext(SWContext)
+
+    const title = hero ? characters[hero].name : "Error";
     return (
         <header className="rounded-t-3xl bg-grey-color pt-7">
             <Navigation/>
-            <h1 className="text-center text-3xl py-6">{characters[hero].name}</h1>
+            <h1 className="text-center text-3xl py-6">{title}</h1>
         </header>
     );
 };

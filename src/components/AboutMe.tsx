@@ -10,6 +10,7 @@ const AboutMe = () => {
 
     useEffect(() => {
 
+        if(isError) return;
         const hero = JSON.parse(localStorage.getItem(heroId)!);
         if (hero && ((Date.now() - hero.timestamp) < period_month)) {
             setHero(hero.payload);
@@ -39,13 +40,17 @@ const AboutMe = () => {
     return !isError ? (
         <>
             {(!!hero) &&
-                <div className={'flex flex-col text-[2em] text-justify tracking-widest leading-14 ml-8'}>
-                    <img className={'w-64 h-auto rounded-xl shadow-lg'} src={characters[heroId].img} alt={characters[heroId].name} />
-                    {Object.keys(hero).map(key => <p key={key}>
-                        <span
-                            className={'text-3xl capitalize flex text-center'}>{key.replace('_', ' ')}</span>: {hero[key as keyof HeroInfo]}
-
-                    </p>)}
+                <div className={'flex flex-row items-start justify-around text-[2em] text-justify tracking-widest leading-14 ml-8 m-3 '}>
+                    <img className={'w-120 h-auto rounded-xl shadow-lg'} src={characters[heroId].img}
+                         alt={characters[heroId].name}/>
+                    <div className={'flex flex-col text-justify'}>
+                        {Object.entries(hero).map(([key, value]) => (
+                            <div key={key} className="flex flex-row mb-2">
+                                <div className="w-58 font-bold capitalize text-2xl">{key.replace('_', ' ')} :</div>
+                                <div className="text-2xl ml-4">{value}</div>
+                            </div>
+                        ))}
+                    </div>
 
 
                 </div>
